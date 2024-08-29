@@ -1,32 +1,37 @@
-const tags = [];
+function calculateGiftDelivery(giftName, recipientCountry, weight) {
+  const deliveryPrice = 20;
+  const weightOneKg = 5;
+  let totalCost = weight * weightOneKg + deliveryPrice;
 
-for (let i = 2; i < 11; i += 3) {
-  tags.push(`tag-${i}`);
-}
-
-console.log(tags);
-
-function createArrayOfNumbers(min, max) {
-  const index = [];
-  for (let i = min; i <= max; i++) {
-    index.push(i);
+  if (weight > 10) {
+    totalCost *= 0.95;
   }
-  return index;
+  totalCost = Math.round(totalCost);
+
+  return `Delivering ${giftName} to ${recipientCountry} will cost ${totalCost} dollars`;
 }
 
-console.log(createArrayOfNumbers(1, 3)); // [1, 2, 3]
-console.log(createArrayOfNumbers(14, 17)); // [14, 15, 16, 17]
-console.log(createArrayOfNumbers(29, 34)); // [29, 30, 31, 32, 33, 34]
+console.log(calculateGiftDelivery("Teddy Bear", "USA", 2.3));
 
-// Функція createArrayOfNumbers(min, max) приймає два параметра:
+// Уявіть, що ви розробляєте програмне забезпечення для міжнародної служби доставки подарунків. Вам потрібно створити функцію для розрахунку вартості доставки подарунка та генерації повідомлення для клієнта.
+// Оголосіть функцію calculateGiftDelivery, яка очікує три параметри:
 
-// min - ціле число, з якого починаються обчислення
-// max - ціле число, до якого включно триватимуть обчислення
-// Доповни код функції createArrayOfNumbers(min, max) таким чином, щоб вона повертала масив усіх цілих чисел від значення min до max включно.
+// giftName — перший параметр, рядок, що містить назву подарунка
+// recipientCountry — другий параметр, рядок, що містить країну отримувача
+// weight — третій параметр, число, що містить вагу подарунка в кілограмах
 
-// Оголошена функція createArrayOfNumbers(min, max)
-// Виклик функції createArrayOfNumbers(1, 3) повертає [1, 2, 3]
-// Виклик функції createArrayOfNumbers(14, 17) повертає [14, 15, 16, 17]
-// Виклик функції createArrayOfNumbers(29, 34) повертає [29, 30, 31, 32, 33, 34]
-// Виклик функції createArrayOfNumbers() з випадковими min і max повертає правильний масив
-// В циклі for використовувався метод push
+// Доповніть код функції так, щоб вона повертала рядок з повідомленням про доставку подарунка:
+// "Delivering <giftName> to <recipientCountry> will cost <totalCost> dollars", де:
+
+// <giftName> — це назва подарунка
+// <recipientCountry> — це країна отримувача
+// <totalCost> — це загальна вартість доставки
+
+// Для розрахунку вартості доставки використовуйте наступну формулу:
+
+// Базова вартість доставки: 20 доларів
+// Додаткова вартість за кожен кілограм ваги: 5 доларів
+// Якщо вага подарунка перевищує 10 кг, застосуйте знижку 5% до загальної вартості
+
+// Округліть загальну вартість до цілого числа.
+// Використайте наступний код для перевірки вашої функції:
